@@ -19,8 +19,8 @@ app.add_middleware(
 )
 
 # 🔹 Додаємо маршрути
-app.include_router(meals.router, prefix="/meals", tags=["Meals"])
-app.include_router(menu_plan.router, prefix="/menu", tags=["Menu Plan"])
+app.include_router(meals.router, prefix="meals", tags=["Meals"])
+app.include_router(menu_plan.router, prefix="menu", tags=["Menu Plan"])
 
 @app.get("/")
 def read_root():
