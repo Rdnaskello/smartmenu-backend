@@ -1,9 +1,10 @@
 from fastapi import FastAPI
 from app.routes import meals, menu_plan
 from fastapi.middleware.cors import CORSMiddleware
-from fastapi.middleware.cors import CORSMiddleware
+
 app = FastAPI(title="SmartMenu API")
 
+# 🔹 Налаштування CORS
 app.add_middleware(
     CORSMiddleware,
     allow_origins=[
@@ -17,6 +18,7 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
+# 🔹 Додаємо маршрути
 app.include_router(meals.router, prefix="/meals", tags=["Meals"])
 app.include_router(menu_plan.router, prefix="/menu", tags=["Menu Plan"])
 
