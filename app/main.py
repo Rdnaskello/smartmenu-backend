@@ -6,10 +6,15 @@ app = FastAPI(title="SmartMenu API")
 
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["*"],  # Дозволяє запити з усіх доменів (можеш вказати конкретний)
+    allow_origins=[
+        "http://localhost:3000",  # Локальний фронтенд
+        "https://smartmenu-frontend-alpha.vercel.app",  # Vercel фронтенд
+        "https://web-production-00bb.up.railway.app",  # Railway бекенд
+    ],
+    allow_origin_regex="https://.*\.vercel\.app",  # Дозволяє всі піддомени на Vercel
     allow_credentials=True,
-    allow_methods=["*"],  # Дозволяє всі методи (GET, POST, PUT, DELETE)
-    allow_headers=["*"],  # Дозволяє всі заголовки
+    allow_methods=["*"],
+    allow_headers=["*"],
 )
 
 app.include_router(meals.router, prefix="/meals", tags=["Meals"])
